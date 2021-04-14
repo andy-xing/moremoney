@@ -7,10 +7,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+
 export default {
-  name: "Labels",
-}
+  name: 'Labels',
+};
 </script>
 
 <style lang="scss" scoped>

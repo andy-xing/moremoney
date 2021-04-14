@@ -1,9 +1,8 @@
 <template>
   <div class="nav-wrapper">
     <div class="content">
-      <slot></slot>
+    <slot/>
     </div>
-    <Nav/>
   </div>
 </template>
 
