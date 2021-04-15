@@ -1,9 +1,8 @@
 <template>
   <div class="nav-wrapper">
     <layout>
-      <P>Money.vue</P>
+      <P>你好</P>
     </layout>
-    <Nav/>
   </div>
 </template>
 
