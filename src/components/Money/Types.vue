@@ -13,17 +13,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Prop} from 'vue-property-decorator';
+import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue {
   type = '-'; //'-'表示支出，'+'表示收入
 
-  @Prop(Number) readonly xxxx: number | undefined;
-  //Props 告诉 vue xxxx不是data 是prop
-  //Number 告诉 vue xxxx 运行时是number
-  //xxxx是属性名
-  //number | undefined告诉TS xxxx编译时的类型
+  @Prop() readonly value!:string;
 
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
@@ -31,6 +27,11 @@ export default class Types extends Vue {
     }
     this.type = type;
   }
+@Watch('type')
+  onTypeChanged(value:string){
+    this.$emit('update:value',value)
+}
+
 }
 </script>
 
