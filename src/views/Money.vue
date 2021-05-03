@@ -1,12 +1,10 @@
 <template>
-  <div class="nav-wrapper">
-    <layout>
-      <tags :data-source.sync="tags"/>
-      <notes/>
-      <types/>
+    <layout class-prefix="layout">
       <number-pad/>
+      <types/>
+      <notes/>
+      <tags :data-source.sync="tags"/>
     </layout>
-  </div>
 </template>
 
 <script>
@@ -26,7 +24,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+.layout-content{
+  display: flex;
+  flex-direction: column-reverse;
+}
 
 </style>
