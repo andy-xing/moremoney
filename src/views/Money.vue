@@ -1,7 +1,7 @@
 <template>
   <div class="nav-wrapper">
     <layout>
-      <tags/>
+      <tags :data-source="tags"/>
       <notes/>
       <types/>
       <number-pad/>
@@ -19,6 +19,10 @@ import Tags from "@/components/Money/Tags"
 export default {
   name: "Money",
   components: {Tags, Notes, Types, NumberPad},
+  data(){
+    return {tags: ['衣','食','住','行']}
+  }
+
 }
 </script>
 
