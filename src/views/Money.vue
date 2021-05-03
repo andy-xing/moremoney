@@ -1,7 +1,7 @@
 <template>
   <div class="nav-wrapper">
     <layout>
-      <tags :data-source="tags"/>
+      <tags :data-source.sync="tags"/>
       <notes/>
       <types/>
       <number-pad/>
