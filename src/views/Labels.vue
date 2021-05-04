@@ -32,7 +32,6 @@ export default class Labels extends Vue {
       }else if (message ==='success'){
         window.alert('添加成功')
       }
-      console.log(tagListModel.fetch());
     }
   }
 }

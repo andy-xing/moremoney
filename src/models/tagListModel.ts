@@ -6,7 +6,7 @@ type TagListModel = {
   save: () => void;
 }
 
-const tagListModel: TagListModel = {
+const tagListModel:TagListModel = {
   data: [],
   fetch(){
     this.data = JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]');
@@ -21,7 +21,7 @@ const tagListModel: TagListModel = {
     return 'success';
   },
   save() {
-    window.localStorage.setItem('localStorageKeyName', JSON.stringify(this.data));
+    window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.data));
   },
 }
 export default tagListModel;
