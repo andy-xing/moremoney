@@ -1,9 +1,10 @@
 <template>
   <layout class-prefix="layout">
-    {{record}}
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
     <Types @update:value="onUpdateType"/>
-    <Notes fiel-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
+    <div class="notes">
+      <from-item field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
+    </div>
     <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
   </layout>
 </template>
@@ -13,7 +14,7 @@ import Vue from 'vue';
 import {Component, Watch} from 'vue-property-decorator';
 import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
-import Notes from '@/components/Money/Notes.vue';
+import FromItem from '@/components/Money/FromItem.vue';
 import Tags from '@/components/Money/Tags.vue';
 import recordListModel from '@/models/recordListModel.ts';
 import tagListModel from '@/models/tagListModel';
@@ -22,7 +23,7 @@ const recordList = recordListModel.fetch();
 const tagList = tagListModel.fetch();
 
 
-@Component({components: {Tags, Notes, Types, NumberPad}})
+@Component({components: {Tags,FromItem, Types, NumberPad}})
 export default class Money extends Vue {
   tags = tagList;
   recordList: RecordItem[] = recordList;
@@ -64,6 +65,9 @@ export default class Money extends Vue {
 .layout-content {
   display: flex;
   flex-direction: column-reverse;
+}
+.notes{
+  padding: 12px 0;
 }
 
 </style>
