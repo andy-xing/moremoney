@@ -6,7 +6,7 @@
       <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-      <from-item field-name="标签名" placeholder="在这里输入标签名"/>
+      <from-item :value="tag.name" field-name="标签名" placeholder="在这里输入标签名"/>
     </div>
     <div class="button-wrapper">
       <Button>删除标签</Button>
@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Prop} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import tagListModel from '@/models/tagListModel';
 import FromItem from '@/components/Money/FromItem.vue';
 import Button from '@/components/Button.vue';
@@ -25,13 +25,14 @@ import Button from '@/components/Button.vue';
   components: {Button, FromItem}
 })
 export default class EditLabel extends Vue {
+  tag?:{id:string,name:string}=undefined;
   created() {
     const id = this.$route.params.id;
     tagListModel.fetch();
     const tags = tagListModel.data;
     const tag = tags.filter(t => t.id === id)[0];
     if (tag) {
-      console.log(tag);
+     this.tag = tag;
     } else {
       this.$router.replace('/404');
     }
