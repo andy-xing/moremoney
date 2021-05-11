@@ -31,7 +31,7 @@ import Button from '@/components/Button.vue';
 export default class EditLabel extends Vue {
   tag?: { id: string, name: string } = undefined;
 
-  created() {
+    created() {
     const id = this.$route.params.id;
     tagListModel.fetch();
     const tags = tagListModel.data;
