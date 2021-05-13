@@ -16,15 +16,23 @@ import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
 import FromItem from '@/components/Money/FromItem.vue';
 import Tags from '@/components/Money/Tags.vue';
-import store from '@/store/index2';
 
 
-@Component({components: {Tags,FromItem, Types, NumberPad}})
+@Component({
+  components: {Tags, FromItem, Types, NumberPad},
+})
 export default class Money extends Vue {
-  recordList= store.recordList;
+  get recoredList() {
+    return this.$store.state.recordList;
+  }
+
   record: RecordItem = {
     'tags': [], 'notes': '', 'type': '-', 'amount': 0
   };
+
+  created() {
+    this.$store.commit('fetchRecords');
+  }
 
 
   onUpdateNotes(value: string) {
@@ -40,7 +48,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-   store.createRecord(this.record)
+    this.$store.commit('createRecord', this.record);
   }
 
 }
@@ -52,7 +60,8 @@ export default class Money extends Vue {
   display: flex;
   flex-direction: column-reverse;
 }
-.notes{
+
+.notes {
   padding: 12px 0;
 }
 
