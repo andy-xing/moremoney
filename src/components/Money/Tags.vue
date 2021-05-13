@@ -19,10 +19,10 @@ import TagsHelper from '@/mixins/TagsHelper';
 
 @Component
 export default class Tags extends Mixins(TagsHelper) {
+  selectedTags: string[] = [];
   get tagList(){
     return this.$store.state.tagList;
   }
-  selectedTags: string[] = [];
 
   created(){
     this.$store.commit('fetchTags')
@@ -38,11 +38,6 @@ export default class Tags extends Mixins(TagsHelper) {
     this.$emit('update:value', this.selectedTags);
   }
 
-  create() {
-    const name = window.prompt('请输入标签名');
-    if (!name) {window.alert('标签名不能为空');}
-      this.$store.commit('createTag');
-  }
 }
 
 </script>
