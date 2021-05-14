@@ -1,5 +1,5 @@
 type RecordItem = {
-  tags: string[]
+  tags: Tag[]
   notes: string
   type: string
   amount: number
@@ -24,6 +24,7 @@ type TagListModel = {
   create: (name: string) => 'success' | 'duplicated'
   save: () => void;
 }
+
 
 interface Window {
 
